@@ -221,25 +221,8 @@ class ModuleCustomTags
 
 		ConfigTag* tag = ServerInstance->Config->ConfValue("customtags");
 		ctags.ext.broadcastchanges = tag->getBool("broadcastchanges");
-		ctags.broadcastvendor = tag->getBool("broadcastvendor", false);
+		ctags.broadcastvendor = tag->getBool("broadcastvendor", true);
 		ctags.vendor = tag->getString("vendor", ServerInstance->Config->ServerName, 1);
-		ServerInstance->Logs->Log(MODNAME, LOG_DEFAULT, "Customtags loaded");
-		if (ctags.broadcastvendor)
-		{
-			ServerInstance->Logs->Log(MODNAME, LOG_DEFAULT, "Broadcast vendor enabled");
-		}
-		else
-		{
-			ServerInstance->Logs->Log(MODNAME, LOG_DEFAULT, "Broadcast vendor disabled");
-		}
-		if (ctags.ext.broadcastchanges)
-		{
-			ServerInstance->Logs->Log(MODNAME, LOG_DEFAULT, "Broadcast changes enabled");
-		}
-		else
-		{
-			ServerInstance->Logs->Log(MODNAME, LOG_DEFAULT, "Broadcast chagnes disabled");
-		}
 	}
 
 	Version GetVersion() CXX11_OVERRIDE
